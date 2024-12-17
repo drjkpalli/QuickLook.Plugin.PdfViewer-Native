@@ -65,6 +65,11 @@
         </ProjectReference>
     </ItemGroup>
 
+    <Target Name="ReduceReleasePackaging" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+		<Delete Files="$(OutputPath)\QuickLook.Common.dll" Condition="Exists('$(OutputPath)\QuickLook.Common.dll')" />
+		<Delete Files="$(OutputPath)\QuickLook.Common.pdb" Condition="Exists('$(OutputPath)\QuickLook.Common.pdb')" />
+    </Target>
+
     <ItemGroup>
         <None Include="..\QuickLook.Plugin.Metadata.Base.config" />
         <None Include="..\QuickLook.Plugin.Metadata.config">
