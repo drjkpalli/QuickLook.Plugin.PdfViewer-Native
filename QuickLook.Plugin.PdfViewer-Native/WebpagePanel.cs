@@ -100,10 +100,11 @@ public class WebpagePanel : UserControl
 
     private object CreateDownloadButton()
     {
+        string translationFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Translations.config");
+
         var button = new Button
         {
-            Content = TranslationHelper.Get("WEBVIEW2_NOT_AVAILABLE",
-                domain: Assembly.GetExecutingAssembly().GetName().Name),
+            Content = TranslationHelper.Get("WEBVIEW2_NOT_AVAILABLE", translationFile),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
             Padding = new Thickness(20, 6, 20, 6)
